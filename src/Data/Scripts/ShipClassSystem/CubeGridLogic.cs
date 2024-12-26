@@ -627,6 +627,9 @@ namespace ShipClassSystem
 
         private IEnumerable<BlockLimit> GetRelevantLimits(IMySlimBlock block)
         {
+            if(GridClass.BlockLimits == null)
+                return new List<BlockLimit>();
+            
             return GridClass.BlockLimits.Where(limit => limit.BlockTypes
                 .Any(type => type.TypeId == Utils.GetBlockTypeId(block) && type.SubtypeId == Utils.GetBlockSubtypeId(block)));
         }
